@@ -1,0 +1,79 @@
+[
+  {
+    "procedure_name": "Laparoscopic Cholecystectomy",
+    "common_names": ["Lap Chole", "Gallbladder removal"],
+    "icd10_code": "0FT44ZZ",
+    "typical_duration_minutes": 60,
+    "difficulty": "Basic",
+    "steps": [
+      {
+        "number": 1,
+        "name": "Access and Pneumoperitoneum",
+        "description": "Establishment of pneumoperitoneum and insertion of trocars.",
+        "key_anatomy": ["Umbilicus", "Peritoneum"],
+        "common_instruments": ["Veress needle", "Trocars"],
+        "duration_minutes": 5,
+        "risk_level": "Medium",
+        "teaching_point": "Always verify safe entry to avoid bowel or vascular injury."
+      },
+      {
+        "number": 2,
+        "name": "Exposure of Calot's Triangle",
+        "description": "Retraction of gallbladder to expose the hepatocystic triangle.",
+        "key_anatomy": ["Gallbladder", "Liver bed", "Calot's triangle"],
+        "common_instruments": ["Graspers"],
+        "duration_minutes": 10,
+        "risk_level": "Medium",
+        "teaching_point": "Critical view of safety must be obtained before clipping."
+      },
+      {
+        "number": 3,
+        "name": "Dissection of Cystic Duct and Artery",
+        "description": "Isolating the cystic duct and artery from surrounding tissue.",
+        "key_anatomy": ["Cystic duct", "Cystic artery", "Common bile duct"],
+        "common_instruments": ["Maryland dissector", "Hook electrocautery"],
+        "duration_minutes": 15,
+        "risk_level": "High",
+        "teaching_point": "Misidentification of the common bile duct is the most catastrophic error."
+      },
+      {
+        "number": 4,
+        "name": "Clipping and Division",
+        "description": "Placement of surgical clips on the cystic duct and artery and division.",
+        "key_anatomy": ["Cystic duct", "Cystic artery"],
+        "common_instruments": ["Clip applier", "Endoshears"],
+        "duration_minutes": 5,
+        "risk_level": "High",
+        "teaching_point": "Ensure clips are secure and no other structures are caught in the clip."
+      },
+      {
+        "number": 5,
+        "name": "Gallbladder Dissection from Liver Bed",
+        "description": "Separating the gallbladder from the liver bed using electrocautery.",
+        "key_anatomy": ["Gallbladder", "Liver bed"],
+        "common_instruments": ["Hook electrocautery", "Graspers"],
+        "duration_minutes": 15,
+        "risk_level": "Medium",
+        "teaching_point": "Maintain correct tissue plane to avoid liver injury and excessive bleeding."
+      },
+      {
+        "number": 6,
+        "name": "Extraction and Closure",
+        "description": "Removal of gallbladder in an endocatch bag and closure of port sites.",
+        "key_anatomy": ["Abdominal wall", "Fascia"],
+        "common_instruments": ["Endocatch bag", "Sutures"],
+        "duration_minutes": 10,
+        "risk_level": "Low",
+        "teaching_point": "Careful extraction prevents bile spillage and port-site infection."
+      }
+    ],
+    "key_anatomical_structures": ["Gallbladder", "Cystic duct", "Cystic artery", "Common bile duct", "Liver", "Calot's triangle"],
+    "common_complications": [
+      { "name": "Bile duct injury", "frequency": "Rare", "severity": "Major" },
+      { "name": "Bleeding", "frequency": "Uncommon", "severity": "Major" },
+      { "name": "Bile leak", "frequency": "Uncommon", "severity": "Minor" }
+    ],
+    "contraindications": ["Inability to tolerate general anesthesia", "Uncorrectable coagulopathy"],
+    "learning_resources": ["SAGES Guidelines for Laparoscopic Cholecystectomy"]
+  }
+]

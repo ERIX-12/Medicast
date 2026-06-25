@@ -1,0 +1,4 @@
+redis[asyncio]
+watchdog
+python-dotenv
+loguru

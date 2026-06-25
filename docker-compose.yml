@@ -1,0 +1,96 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: ["redis_data:/data"]
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  ingestion:
+    build: ./ingestion
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    volumes:
+      - ./uploads:/uploads
+    env_file: .env
+    logging: &default_logging
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+  vision:
+    build: ./vision
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    env_file: .env
+    logging: *default_logging
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: amd
+              count: all
+              capabilities: [gpu]
+
+  compiler:
+    build: ./compiler
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    env_file: .env
+    logging: *default_logging
+
+  telemetry:
+    build: ./telemetry
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    ports: ["8001:8001"]
+    env_file: .env
+    logging: *default_logging
+
+  kb:
+    build: ./kb
+    restart: unless-stopped
+    ports: ["8002:8002"]
+    logging: *default_logging
+
+  blackbox:
+    build: ./blackbox
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    volumes:
+      - ./output:/output
+    env_file: .env
+    logging: *default_logging
+
+  api:
+    build: ./api
+    restart: unless-stopped
+    depends_on:
+      redis: { condition: service_healthy }
+    ports: ["8000:8000"]
+    volumes:
+      - ./uploads:/uploads
+      - ./output:/output
+    env_file: .env
+    logging: *default_logging
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports: ["3000:80"]
+    depends_on: [api]
+    logging: *default_logging
+
+volumes:
+  redis_data:

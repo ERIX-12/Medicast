@@ -1,0 +1,7 @@
+redis[asyncio]
+fastapi[all]
+uvicorn[standard]
+httpx
+python-dotenv
+loguru
+openai

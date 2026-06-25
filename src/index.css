@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-dark-space: #050810;
+  --color-accent-cobalt: #2563EB;
+  --color-alert-red: #EF4444;
+  --color-safe-green: #22C55E;
+  --color-warning-amber: #F59E0B;
+}
+
+body {
+  background-color: var(--color-dark-space);
+  color: white;
+  font-family: var(--font-sans);
+}
+
+/* High Contrast Mode for Surgical Theater */
+body.theme-hc {
+  --color-dark-space: #000000;
+  --color-accent-cobalt: #00FFFF;
+  --color-alert-red: #FF0000;
+  --color-safe-green: #00FF00;
+  --color-warning-amber: #FFFF00;
+  background-color: #000000;
+}
+
+body.theme-hc [class*="bg-[#0A0E17]"],
+body.theme-hc [class*="bg-[#050810]"],
+body.theme-hc [class*="bg-[#020408]"],
+body.theme-hc [class*="bg-black"] {
+  background-color: #000000 !important;
+}
+
+body.theme-hc [class*="border-white/"] {
+  border-color: #ffffff !important;
+}
+
+body.theme-hc [class*="text-white/"] {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+body.theme-hc [class*="bg-white/"] {
+  background-color: transparent !important;
+  border: 1px solid #ffffff;
+}
+
+body.theme-hc [class*="from-white/"] {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+body.theme-hc .backdrop-blur-sm,
+body.theme-hc .backdrop-blur-md,
+body.theme-hc .backdrop-blur {
+  backdrop-filter: none !important;
+  background-color: #000000 !important;
+}
+
+/* Specific component overrides for HC */
+body.theme-hc line, body.theme-hc path {
+  opacity: 1 !important;
+}
+

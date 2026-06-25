@@ -1,0 +1,4 @@
+redis[asyncio]
+httpx
+python-dotenv
+loguru

@@ -1,0 +1,5 @@
+redis[asyncio]
+fastapi
+uvicorn
+python-dotenv
+loguru
